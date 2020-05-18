@@ -124,9 +124,10 @@ function create_rows() {
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-               <img src="" class="img-circle" alt="">
+               <img src="www" class="img-circle" alt="">
 
                 <p>
+                <?php echo $subname; ?>
                  <?php echo $_SESSION['email'];?> - <?php echo $_SESSION['role'];?>
                   <small><?php echo $_SESSION['fname'];?></small>
                 </p>
@@ -159,7 +160,11 @@ function create_rows() {
           <img src="" class="img-circle" alt="">
         </div>
         <div class="pull-left info">
-          <p><?php echo $_SESSION['fname'];?></p>
+        <?php  $name = $_SESSION['fname'];
+             $subname = substr($name,0,2);
+?>
+        <h4> <?php echo $subname; ?></h4>
+        <br><br>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>

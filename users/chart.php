@@ -37,7 +37,7 @@ if(isset($_POST['insert'])){
 	$product = htmlspecialchars($_POST['product']);
 	$validity = htmlspecialchars($_POST['validity']);
 	$expiry_date = htmlspecialchars($_POST['expiry_date']);
-	$serial_no = md5($truck_reg);
+	$serial_no = mt_rand(0,9);
 	 
 	$message = '';
 	//$image = $_FILES["image"];
