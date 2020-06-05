@@ -43,7 +43,7 @@ if(!isset($_SESSION['email'])){
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-
+  <link rel="stylesheet" href="includes/user.css">
   <script type="text/javascript">
 function create_rows() {
     // Find a <table> element with id="myTable":
@@ -113,38 +113,9 @@ function create_rows() {
           <!-- Notifications: style can be found in dropdown.less -->
  
           <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="" class="user-image" alt="">
-              <span class="hidden-xs"><?php echo $_SESSION['email'];?></span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-               <img src="" class="img-circle" alt="">
-
-                <p>
-                 <?php echo $_SESSION['email'];?> - <?php echo $_SESSION['role'];?>
-                  <small><?php echo $_SESSION['fname'];?></small>
-                </p>
-              </li>
-              <!-- Menu Body -->
-              
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-				            
-                </div>
-                <div class="pull-right">
-                  <a href="../logout.php" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-              </li>
-            </ul>
-          </li>
+           
           <!-- Control Sidebar Toggle Button -->
-          <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
+           
         </ul>
       </div>
     </nav>
@@ -158,21 +129,21 @@ function create_rows() {
         <div class="pull-left image">		 
           <img src="" class="img-circle" alt="">
         </div>
-        <div class="pull-left info">
-          <p><?php echo $_SESSION['fname'];?></p>
+        <div class="">
+         
+        <?php  $name = $_SESSION['fname'];
+             $subname = substr($name,0,1);
+         ?>
+        <div id="profile"><h4><?php echo $subname; ?></h4> </div>
+        <br><br>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
+  
+      
+          
       </div>
       <!-- search form -->
-      <form action="search.php" method="POST" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="search" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
-                <button type="submit" name="submit" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
+       
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
@@ -239,7 +210,9 @@ function create_rows() {
             
           </ul>
         </li>
- 
+        <li><a href="../logout.php"><i class="fa fa-sign-out"></i> Sign out</a>
+             </li>
+
       </ul>
     </section>
     <!-- /.sidebar -->
