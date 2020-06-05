@@ -24,19 +24,19 @@ if(isset($_POST['submit'])){
                     }
             
                 } 
-
+            }
+        
+        
                 
          $sql2 = "SELECT * FROM users WHERE Userid ='$_SESSION[Userid]'";                     
          $select_query = mysqli_query($connect, $sql2);
          $count = mysqli_num_rows($select_query);
-         if($count == 1){
+         if($count > 0){
             while($row = mysqli_fetch_array($select_query)){		       
                 $_SESSION['fname'] = $row['fname'];
                
             }
          }
-        
-    } 
 
 
 ?>
