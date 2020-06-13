@@ -34,9 +34,8 @@ if(isset($_POST['insert'])){
 	$spring = htmlspecialchars($_POST['spring']);
 	$product = htmlspecialchars($_POST['product']);
 	$validity = htmlspecialchars($_POST['validity']);
-	$expiry_date = htmlspecialchars($_POST['expiry_date']);
-	date
-	$serial_no = $sku;
+	$expiry_date = htmlspecialchars($_POST['expiry_date']);	 
+	$serial_no = rand();
 	 
 	$message = '';
 	//$image = $_FILES["image"];
