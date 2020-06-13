@@ -160,7 +160,7 @@ function create_rows() {
             <i class="fa fa-files-o"></i>
 			<?php 
 		  
-	     $sql = " SELECT COUNT(*) AS total FROM users";	 
+	     $sql = " SELECT COUNT(*) AS total FROM users WHERE role ='user'";	 
          $query = mysqli_query($connect, $sql) or die(mysqli_error($connect));
 	     $row = mysqli_fetch_assoc($query);
 	     $num = $row['total']; 
@@ -171,12 +171,12 @@ function create_rows() {
           <ul class="treeview-menu">
 		  			<?php 
 		  
-	     $sql = " SELECT COUNT(*) AS total FROM users";	 
+	     $sql = " SELECT COUNT(*) AS total FROM users WHERE role='user'";	 
          $query = mysqli_query($connect, $sql) or die(mysqli_error($connect));
 	     $row = mysqli_fetch_assoc($query);
 	     $jnum = $row['total']; 
 		?>
-            <li><a href="sign_up.php"><i class="fa fa-circle-o"></i>Add User</a><i class="label label-primary pull-right"><?php echo $jnum;?></i></li>
+            <li><a href="user.php"><i class="fa fa-circle-o"></i>Add User</a><i class="label label-primary pull-right"><?php echo $jnum;?></i></li>
              
             <li><a href="users.php"><i class="fa fa-circle-o"></i>Manage Users</a></li>
             
@@ -195,10 +195,17 @@ function create_rows() {
         </li>
 		
          <li class="treeview">
+         <?php 
+		  
+      $sql = " SELECT COUNT(*) AS total FROM caliberation_chart";	 
+        $query = mysqli_query($connect, $sql) or die(mysqli_error($connect));
+      $row = mysqli_fetch_assoc($query);
+      $cnum = $row['total']; 
+   ?>
           <a href="#">
             <i class="fa fa-files-o"></i>
             <span>Charts</span>
-            <i class="fa fa-angle-left pull-right"></i>
+          <i class="label label-primary pull-right"><?php echo $cnum;?></i></i>
           </a>
           <ul class="treeview-menu">
             <li><a href="chart.php"><i class="fa fa-circle-o"></i>Add Chart</a></li>

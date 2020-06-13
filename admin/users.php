@@ -37,11 +37,9 @@ if(!isset($_SESSION['email'])){
                 <div class="box-body">
 				 
 				<div class="panel panel-default">
-            <div class="panel-heading"><h2 class="text-center">Manage Registered Users</h2></div>
-			
-			 
-			
-			</div>
+            <div class="panel-heading"><h2 class="text-center">Manage Registered Users</h2></div>			
+            </div>
+            <a href="user.php" class="btn btn-success">Add New User</a><br/><br/>
 			<div style="overflow-y:scroll;height:250px;" class="table-responsive">
             <table class="table table-hover">
 
@@ -56,7 +54,7 @@ if(!isset($_SESSION['email'])){
                 <?php
   
                     $sn = 1;
-                $sql = "SELECT * FROM users ORDER BY Userid ASC ";
+                $sql = "SELECT * FROM users WHERE role ='user' ORDER BY DateCreated DESC";
                 $query = mysqli_query($connect, $sql);
                 while($row = mysqli_fetch_array($query)){
                 $id = $row['Userid'];                

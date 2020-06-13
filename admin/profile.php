@@ -82,12 +82,7 @@ if(isset($_POST['submit'])){
 						<label>Email </label>
                             <input type="email" class="form-control" name="email" value="<?php echo $email; ?>" >
                         </div>
-
-                        <div class="form-group">
-						<label>Old Password </label>
-                            <input type="password" class="form-control" name="password" value="<?php echo $password; ?>" >
-                        </div>
-
+ 
                         <div class="form-group">
 						<label>New Password </label>
                             <input type="password" class="form-control" name="npassword">

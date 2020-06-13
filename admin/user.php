@@ -14,12 +14,12 @@ if(isset($_POST['sign'])){
  
 	$fname = htmlspecialchars($_POST['fname']);
 	$email = htmlspecialchars($_POST['email']);	  	 
-	$role = htmlspecialchars($_POST['role']);	  	 
+	//$role = htmlspecialchars($_POST['role']);	  	 
 	$password = htmlspecialchars($_POST['password']);
 	$cpassword = htmlspecialchars($_POST['cpassword']);
 	$message = '';
 	//$image = $_FILES["image"];
-		if(!empty($fname) && !empty($email)&& !empty($role)&& !empty($password)&& !empty($cpassword)){
+		if(!empty($fname) && !empty($email)&& !empty($password)&& !empty($cpassword)){
  
 
      
@@ -28,27 +28,27 @@ $sql3 = "SELECT Email FROM users WHERE email = '$email'";
 	$result = mysqli_query($connect,$sql3)or die(mysqli_error($connect));
 	$numrow = mysqli_num_rows($result);
 	if($numrow != 0){
-		$message .= '<h class="alert alert-danger" >This email already existed, please try other!</h4>';
+		$message .= '<b class="alert alert-danger" >This email already existed, please try other!</b>';
 		exit;
 	}else{
 		
 		
        //confirming password inputed
 		if($password !== $cpassword){
-		$message=  '<h4 class="alert alert-danger">your password do not match!</h4>';
+		$message .= '<b class="alert alert-danger">your password do not match!</b>';
 		if(@$message){
 				 exit;
 	} 
 		}else{
 		$encpassword = md5($password);
 	 
-	$sql = "INSERT INTO users (fname,email,role,password) VALUES('$fname', '$email', '$role', '$encpassword')";
+	$sql = "INSERT INTO users (fname,email,role,password) VALUES('$fname', '$email', 'user', '$encpassword')";
 	$result = mysqli_query($connect,$sql)or die(mysqli_error($connect));
 	if($result){
-		 $message .=  '<h4 class="alert alert-success" >user added successfully!</h4>';
+		 $message .=  '<b class="alert alert-success" >user added successfully!</b>';
 				 //header("location:../index.php");
 	}else{
-		$message .=  '<h4 class="alert alert-danger" >Error with registeration!</h4>';
+		$message .=  '<b class="alert alert-danger" >Error with registeration!</b>';
 		exit;
 	}
 }
@@ -74,11 +74,12 @@ $sql3 = "SELECT Email FROM users WHERE email = '$email'";
 
         <!-- Main content -->
         <section class="content">
-            <?php echo $message ?>
-
+           
             <!-- Default box -->
             <div class="box">
                 <div class="box-header with-border">
+                <div><?php echo $message ?></div>
+
                     <h3 class="box-title">User </h3>
 
                     <div class="box-tools pull-right">
@@ -101,15 +102,7 @@ $sql3 = "SELECT Email FROM users WHERE email = '$email'";
 						<label>Email</label>
                             <input type="email" class="form-control" placeholder="Email" name="email" required>
                         </div>
-						
-						<div class="form-group">
-						<label>Role</label>
-						<select class="form-control" name="role" title="user's role" required>		 
-						<option value="admin">admin</option>
-						<option value="user">user</option>		 		 
-						</select>
-						</div>
-						
+					 
 						<div class="form-group">
 						<label>Password</label>
                             <input type="password" class="form-control" placeholder="Password" name="password" required>
@@ -120,11 +113,10 @@ $sql3 = "SELECT Email FROM users WHERE email = '$email'";
                             <input type="password" class="form-control" placeholder="Comfirm Password" name="cpassword" required>
                         </div>
                          
-						</br>
-						</br>
-						</br>
+						<br/>
+		 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary" name="sign" >Sign Up</button>
+                            <button type="submit" class="btn btn-primary btn-block" name="sign" >Sign Up</button>
                              
                         </div>
                     </form>
