@@ -189,12 +189,8 @@ function create_rows() {
             <span>Settings</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
-          <ul class="treeview-menu">
-		   
-            <li><a href="username.php"><i class="fa fa-pencil"></i>Update Username</a></li>
-            <li><a href="email.php"><i class="fa fa-pencil"></i>Update Email</a></li>
-            <li><a href="password.php"><i class="fa fa-pencil"></i>Update Password</a></li>
-            
+          <ul class="treeview-menu">		   
+            <li><a href="profile.php"><i class="fa fa-pencil"></i>Update Profile</a></li>             
           </ul>
         </li>
 		

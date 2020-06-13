@@ -1,10 +1,7 @@
 <?php session_start();?>
-
 <?php include("includes/connection.php");?>
-<?php include("includes/session.php");?>
- 
-<?php
- 
+<?php include("includes/session.php");?> 
+<?php 
 if(isset($_POST['login'])){
               $message ='';
             $email = $_POST['email'];
@@ -16,7 +13,7 @@ if(isset($_POST['login'])){
                   $numrow = mysqli_num_rows($result);
                   if($numrow !=0){
                 while($row = mysqli_fetch_array($result)){
-                $id = $row['User_id'];	      
+                $id = $row['Userid'];	      
                 $name = $row['fname'];       
                 $dbemail = $row['email'];       
                 $role = $row['role'];      
@@ -25,7 +22,7 @@ if(isset($_POST['login'])){
                 
 	 
                 
-                $_SESSION['User_id'] = $id;        
+                $_SESSION['Userid'] = $id;        
                 $_SESSION['role'] = $role; 
                 $_SESSION['password'] = $dbpassword; 
                 $_SESSION['fname'] = $name;      
@@ -63,134 +60,75 @@ if(isset($_POST['login'])){
 			}
             
 							}else{
-                $message .='password do not match!';
+                $message .='<div class="alert alert-danger">password do not match!</div>';
               }
 							}else{
-                $message .='Email do not match!';
+                $message .='<div class="alert alert-danger">Email do not match!</div>';
               } 
 
 							}
 
 							}
 							}
-							}
+            }
 
  
 ?>
 
+ 
+        <?php include('includes/header1.php');?>
+        
+       
+        <div class="login-box">
+          <div class="login-logo">
+            <a href="../../index2.html"><b>N C C Limited</b></a>
+          </div>
+          <!-- /.login-logo -->
+          <div class="login-box-body">
+          <div><?php echo $message;?></div>
+            <p class="login-box-msg">Sign in to start your session</p>
 
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
-    <title>Ndusonservices Ltd</title>
-    <script src="includes/js/jquery-3.3.1.js"></script>
-    <script src="includes/js/bootstrap.min.js"></script>
-    <!-- Bootstrap core CSS -->
-    <link href="includes/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="includes/navbar-fixed-top.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <link href="includes/publicstyle.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-  <div style="margin-top:-70px;"></div>
-    <!-- Fixed navbar -->
-    <div style="height:10px;background:#27AAE1;"></div>
-    <nav id="head-nav" class="navbar navbar-inverse">
-      <div class="container">
-        <div id="head" class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#"><em><b>NDUSONSERVICES</b></em></a>
+            <form action="" method="post">
+              <div class="form-group has-feedback">
+                <input type="email" class="form-control" name="email" placeholder="Email" required>
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+              </div>
+              <div class="form-group has-feedback">
+                <input type="password" class="form-control" name="password" placeholder="Password" required>
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+              </div>
+              <div class="row">
+                <div class="col-xs-4"></div>
+                <!-- /.col -->
+                <div class="col-xs-4">
+                  <button type="submit" name="login" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                </div>
+            <div class="col-xs-4"></div>
+                <!-- /.col -->
+              </div>
+            </form>     
+            
+          </div>
+          <!-- /.login-box-body -->
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-             
-          </ul>
-<div class="nav navbar-right">
-               <ul id="links" class="nav navbar-nav">
-             <li><a href="index.php">Home</a></li>
-             <li><a href="serial_number.php">Verify Chart</a></li>
-             </ul> 
-</div>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-    <div class="line" style="height:10px;background:#27AAE1;"></div>
-    <div style="padding-top:50px;"></div>
+        
+        <!-- /.login-box -->
 
-    <div class="container">
+        <!-- jQuery 2.2.0 -->
+        <script src="../../plugins/jQuery/jQuery-2.2.0.min.js"></script>
+        <!-- Bootstrap 3.3.5 -->
+        <script src="../../bootstrap/js/bootstrap.min.js"></script>
+        <!-- iCheck -->
+        <script src="../../plugins/iCheck/icheck.min.js"></script>
+        <script>
+          $(function () {
+            $('input').iCheck({
+              checkboxClass: 'icheckbox_square-blue',
+              radioClass: 'iradio_square-blue',
+              increaseArea: '20%' // optional
+            });
+          });
+        </script>
 
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="row"> 
-      <div class="col-md-4"></div>
-      <div class="col-md-4">
-      <div> <?php echo $message;?></div> 
-      <h2>Welcome Back!</h2>
-      
-      <form action="" method="post">
-      <div class="form-group">
-              <label for="email" class="fieldInfo">Email</label>
-              <div class="input-group">
-              <span class="input-group-addon">
-              <span class="glyphicon glyphicon-envelope text-info"></span>             
-              </span>
-              <input type="email" class="form-control input-lg" id="email" name="email" placeholder="Email" required>
-                </div>
-                </div>
-                 
-
-              <br>
-              <div class="form-group">
-              <label for="password" class="fieldInfo">Password</label>
-              <div class="input-group">
-              <span class="input-group-addon">
-              <span class="glyphicon glyphicon-lock  text-info"></span>             
-              </span>
-              <input type="password" class="form-control input-lg" id="password" name="password" placeholder="Password" required>
-                </div>
-                </div>
-                
-              <br>
-                   <div class="form-group">
-              <input type="submit" name="login" value="Login" class="btn btn-lg btn-block btn-primary">
-                </div>
-          </form>
-</div>
-<div class="col-md-4"></div>
-      </div>
-</div>
-
-    </div> <!-- /container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
-</html>
+        </body>
+        </html>

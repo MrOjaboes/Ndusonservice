@@ -3,10 +3,7 @@
 if(!isset($_SESSION['email'])){
      header('location:../index.php');
 }else{
-?> 
-
- 
- 
+?>  
 <?php include "includes/connection.php";?>
 <?php include "includes/header.php";?>
     <!-- Content Wrapper. Contains page content -->

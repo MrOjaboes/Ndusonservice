@@ -119,26 +119,15 @@ if(isset($_POST['submit'])){
 <?php include "includes/header.php";?>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>
-                Calibration Chart Page
-                <small>Add Calibration Chart</small>
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="charts.php" class="active">Calibration Charts</a></li>
-            </ol>
-        </section>
-
-        <!-- Main content -->
+		<!-- Content Header (Page header) -->
+		        <!-- Main content -->
         <section class="content">
             <?php echo $message ?>
 
             <!-- Default box -->
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Calibration Chart </h3>
+                    <h3 class="box-title"></h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">

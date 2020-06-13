@@ -29,7 +29,7 @@
             <input id="search" name="serial_no" type="text" placeholder="Input your serial number" />
           </div>
           <div class="input-field second-wrap">
-            <button class="btn-search" name="go" type="submit"><em>VERIFY</em></button>
+            <button class="btn-search" name="go" type="submit"><em>PRINT</em></button>
           </div>
         </div>
          
