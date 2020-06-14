@@ -9,11 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="author" content="colorlib.com">
-    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
-    <link href="assets/colorlib/css/main.css" rel="stylesheet" />
-	<link type="text/css" rel="stylesheet" href="assets/css/bootstrap.min.css">
+     <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.min.css">
+     
   </head>
-  <body>
+  <body style="
+     background-image: url('./images/dubg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;">
 <div class="container">
   <div class="row">
     <div class="col-md-2"></div>
@@ -31,7 +34,9 @@
     
   <?php
 
-$chk = date("Y-M-D");
+//$chk = date("d-m-Y");
+echo $current;
+//echo $expiry_date;
 $message ='';
 if(isset($_POST['go'])){ 
 
@@ -42,7 +47,10 @@ $sql = "SELECT * FROM caliberation_chart INNER JOIN caliberation_chart_capacity 
 $query = mysqli_query($connect,$sql)or die(mysqli_error($connect));
 $foundno = mysqli_num_rows($query);
 if($foundno > 0){	
- if($chk >= $expiry_date){     	 
+  $chk = date("Y-M-d");
+  $exp_date = strtotime($expiry_date);
+  $current = strtotime($chk);
+ if($exp_date <= $current){     	 
 //echo 'Number of result(s) found!  '.$foundno;
      $sn = 1;
         while($row = mysqli_fetch_assoc($query)){
@@ -92,7 +100,8 @@ if($foundno > 0){
   <div class="panel-body">			
   <div class="page-header" style="margin-top:5px;text-align:center;">  
 <h2 class="text-center text-warning"><strong><em>CALIBRATION CHART DETAILS</em></strong></h2>
-
+  </div>
+  
 
 
 
@@ -207,9 +216,7 @@ if($foundno > 0){
 </div>
 <div class="col-md-1 col-sm-2 col-xs-2"></div>
 </div>
-
-<div class="row">
-
+ 
 <div class="table-responsive"> 
 <table class="table table-stripped">
 
@@ -224,7 +231,7 @@ if($foundno > 0){
                                     
                                     
             </tr>
-    <tr>
+     
     <tbody>
             <?php
              $sn = 1;
@@ -255,15 +262,12 @@ if($foundno > 0){
             }
             ?>
     </tbody>
-     </tr>
+      
     </table>
     
 
 </div>
 
-
-
-</div>
 <div class="row">
 <div class="col-md-4 col-sm-2 col-xs-2">
 <label class="col-xs-8">Air Balloons Def</label>
@@ -303,14 +307,14 @@ if($foundno > 0){
 </div>
 
 <div class="row">
-<div class="form-control-static">
+ 
 <ul>
 <li><b>This certificate of caliberation is not a certificate of quality. it is for use in determining the actual
-volumes loaded when a nominal of 45000 liters is delivered</b>
+volumes loaded when a nominal of &nbsp; &nbsp; 45000 liters is delivered</b>
 </li>
 <li><b>All caliberation with bottom lines full</b></li>
 </ul>
-</div>
+ 
 </div>
 
 <?php
@@ -332,6 +336,8 @@ $message .='<p class="alert alert-danger">No Serial Number To verify</p>';
 ?>
 </div>
 </div>
+</div>
+</div>
 <br><br>
 <div class="row">
   <div class="col-md-2"></div>
@@ -340,6 +346,7 @@ $message .='<p class="alert alert-danger">No Serial Number To verify</p>';
 </div>
 
 
+  
 
 </div>
  

@@ -28,7 +28,7 @@ if(!isset($_SESSION['email'])){
 			<div class="col-md-10">         
 			 
 			  		 			
-			<div class="page-header" style="margin-top:5px;align:center;">  
+			<div class="page-header" style="margin-top:5px;text-align:center;">  
  <h2 class="text-center text-warning"><strong><em>CALIBRATION CHART DETAILS</em></strong></h2>
   </div>
  
