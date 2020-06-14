@@ -39,7 +39,7 @@ if(!isset($_SESSION['email'])){
                 <tr class="active">
                 <th>S/N</th>
 				<th>Full Name</th>			 				 				 			 
-				<th>Email</th>			 				 				 			 
+				<th>Serial Number</th>			 				 				 			 
 				<th>Date Added</th>
                     <th colspan="3"></th>
                 </tr>
@@ -56,10 +56,9 @@ if(!isset($_SESSION['email'])){
                         $transporter = $row['transporter'];
                         $serial_no = $row['serial_no'];
                         $date = $row['date_issued'];
-
-                        $cdate = new DateTime($date); 
+                        //$cdate = new DateTime($date); 
                         //$cdate1 = new DateTime($date_modified); 
-                        $mydate = $cdate->format('l, j F Y');
+                       // $mydate = $cdate->format('l, j F Y');
                         //$mydate1 = $cdate1->format('l, j F Y');
                         
 
@@ -70,7 +69,7 @@ if(!isset($_SESSION['email'])){
                                         <td><?php echo $sn; ?></td>
                                         <td ><?php echo $client;?></td>
                                         <td ><?php echo $serial_no;?></td>
-                                        <td ><?php echo $mydate;?></td>
+                                        <td ><?php echo $date;?></td>
                                         
 
                                         <td>

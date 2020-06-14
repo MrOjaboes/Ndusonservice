@@ -7,8 +7,6 @@ if(!isset($_SESSION['email'])){
 
 <?php
 include "includes/connection.php";
-include "includes/header.php";
-
 
 if(isset($_POST['sign'])){
  
@@ -45,10 +43,10 @@ $sql3 = "SELECT Email FROM users WHERE email = '$email'";
 	$sql = "INSERT INTO users (fname,email,role,password) VALUES('$fname', '$email', 'user', '$encpassword')";
 	$result = mysqli_query($connect,$sql)or die(mysqli_error($connect));
 	if($result){
-		 $message .=  '<b class="alert alert-success" >user added successfully!</b>';
-				 //header("location:../index.php");
+		 $message .=  '<p class="alert alert-success" >user added successfully!</p>';
+			header("refresh:2; url=users.php");
 	}else{
-		$message .=  '<b class="alert alert-danger" >Error with registeration!</b>';
+		$message .=  '<p class="alert alert-danger" >Error with registeration!</p>';
 		exit;
 	}
 }
@@ -58,28 +56,19 @@ $sql3 = "SELECT Email FROM users WHERE email = '$email'";
 	
  ?>
 
+ <?php include "includes/header.php"; ?>
+
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>
-                User Page
-                <small>Add User</small>
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="users.php" class="active">Users</a></li>
-            </ol>
-        </section>
+    <div class="content-wrapper">      
 
         <!-- Main content -->
         <section class="content">
-           
+        <div><?php echo $message ?></div>
+
             <!-- Default box -->
             <div class="box">
                 <div class="box-header with-border">
-                <div><?php echo $message ?></div>
-
+                
                     <h3 class="box-title">User </h3>
 
                     <div class="box-tools pull-right">

@@ -9,7 +9,7 @@ if(!isset($_SESSION['email'])){
 <?php
  
 $message ='Are you sure you want to delete the following client\'s details?';
-
+$message1 ='';
 if(isset($_GET['did'])){
 	$id = $_GET['did'];
 	$sql2 = " SELECT * FROM caliberation_chart WHERE caliberation_chart_id ='$id' LIMIT 1 ";
@@ -36,8 +36,9 @@ if(isset($_POST['delete'])){
             $sql = "DELETE FROM caliberation_chart WHERE caliberation_chart_id = '$dbid' ";
             $query = mysqli_query($connect, $sql) or die(mysqli_error($connect)); 
 			 if($query){
-				 header("location:charts.php");
-} 
+				$message1 .='<p class="alert alert-success">Chart Deleted Successfully!</p>';
+		 header("refresh:2; url=index.php");
+			} 
 } 
  ?>
 
@@ -48,7 +49,7 @@ if(isset($_POST['delete'])){
         <!-- Content Header (Page header) -->
                 <!-- Main content -->
         <section class="content">
-
+  <div><?php echo $message1;?></div>
             <!-- Default box -->
             <div class="box">		
 			
@@ -62,7 +63,7 @@ if(isset($_POST['delete'])){
                     </div>
                 </div>
                 <div class="box-body">
-                    <h4 class="text-center"><b class="alert alert-danger"><?php echo $message;?></b></h4>
+                    <h4 class="text-center"><b>Continue to Delete This Chart Details?</b></h4>
                       <h1><?php echo $client;?></h1>
                 <div class="col-md-4 col-sm-4 col-xs-4"></div>
 			<div class="col-md-4 col-sm-4 col-xs-4">

@@ -35,7 +35,7 @@ if(isset($_POST['insert'])){
 	$product = htmlspecialchars($_POST['product']);
 	$validity = htmlspecialchars($_POST['validity']);
 	$expiry_date = htmlspecialchars($_POST['expiry_date']);
-	$serial_no = mt_rand(0,9);
+	$serial_no = mt_rand(1,100000000000);
 	 
 	$message = '';
 	//$image = $_FILES["image"];
@@ -88,6 +88,9 @@ foreach($capacity_one as $key=>$capacity_one_value)
 		exit;
 	}
 }
+}else{
+	$message .=  '<h4 class="alert alert-danger" >All fields must be filled before submission!</h4>';
+	
 }
 
 }
@@ -128,19 +131,19 @@ foreach($capacity_one as $key=>$capacity_one_value)
 				
 				<div class="form-group">
 				<label>Client Name</label> 
-				<input type="text" class="form-control" name="client" placeholder="click to edit">
+				<input type="text" class="form-control" name="client" placeholder="click to edit" required>
 				</div>
 				
 
 				<div class="form-group">
 				<label>Transporter</label> 
-				<input type="text" class="form-control" name="transporter" placeholder="click to edit">
+				<input type="text" class="form-control" name="transporter" placeholder="click to edit" required>
 				</div>
 				
 
 				<div class="form-group">
 				<label>Date Of Issue</label> 
-				<input type="date" class="form-control" name="dis">
+				<input type="date" class="form-control" name="dis" required>
 				</div>
 				
 
@@ -151,19 +154,19 @@ foreach($capacity_one as $key=>$capacity_one_value)
 		
 					<div class="form-group">
 					<label>Nominal Volume</label> 
-					<input type="text" class="form-control" name="nominal_volume" placeholder="click to edit"> 
+					<input type="text" class="form-control" name="nominal_volume" placeholder="click to edit" required> 
 					</div>
 
 					<div class="form-group">
 					<label>Truck Reg. No</label> 
-					<input type="text" class="form-control" name="truck_reg" placeholder="click to edit">
+					<input type="text" class="form-control" name="truck_reg" placeholder="click to edit" required>
 					</div>
 					
 
 
 					<div class="form-group">
 					<label>Truck Make</label> 
-					<input type="text" class="form-control" name="truck_make" placeholder="click to edit">
+					<input type="text" class="form-control" name="truck_make" placeholder="click to edit" required>
 					</div>
 		
 
@@ -175,25 +178,25 @@ foreach($capacity_one as $key=>$capacity_one_value)
 				<div class="col-sm-4">							
 					<div class="form-group">
 					<label>Compartment #1</label> 
-					<input type="text" class="form-control" name="cmp1" placeholder="click to edit">
+					<input type="text" class="form-control" name="cmp1" placeholder="click to edit" required>
 					</div>
 					
 
 					<div class="form-group">
 					<label>Overall Height</label> 
-					<input type="text" class="form-control" name="oheight1" placeholder="click to edit">
+					<input type="text" class="form-control" name="oheight1" placeholder="click to edit" required>
 					</div>
 					
 
 					<div class="form-group">
 					<label>M/H Neck Height</label> 
-					<input type="text" class="form-control" name="mhn_height1" placeholder="click to edit">
+					<input type="text" class="form-control" name="mhn_height1" placeholder="click to edit" required>
 					</div>
 					
 
 					<div class="form-group">
 					<label>Liquid Height</label> 
-					<input type="text" class="form-control" name="l_height1" placeholder="click to edit">
+					<input type="text" class="form-control" name="l_height1" placeholder="click to edit" required>
 					</div>
 					
 				</div>
@@ -201,25 +204,25 @@ foreach($capacity_one as $key=>$capacity_one_value)
 				<div class="col-sm-4">
 							<div class="form-group">
 							<label>Compartment #2</label> 
-							<input type="text" class="form-control" name="cmp2" placeholder="click to edit">
+							<input type="text" class="form-control" name="cmp2" placeholder="click to edit" required>
 							</div>
 							
 
 							<div class="form-group">
 							<label>Overall Height</label> 
-							<input type="text" class="form-control" name="oheight2" placeholder="click to edit">
+							<input type="text" class="form-control" name="oheight2" placeholder="click to edit" required>
 							</div>
 							
 
 							<div class="form-group">
 							<label>M/H Neck Height</label> 
-							<input type="text" class="form-control" name="mhn_height2" placeholder="click to edit">
+							<input type="text" class="form-control" name="mhn_height2" placeholder="click to edit" required>
 							</div>
 							
 
 							<div class="form-group">
 							<label>Liquid Height</label> 
-							<input type="text" class="form-control" name="l_height2" placeholder="click to edit">
+							<input type="text" class="form-control" name="l_height2" placeholder="click to edit" required>
 							</div>							
 				
 				</div>
@@ -227,25 +230,25 @@ foreach($capacity_one as $key=>$capacity_one_value)
 				<div class="col-sm-4">
 				    <div class="form-group">
 					<label>Compartment #3</label> 
-					<input type="text" class="form-control" name="cmp3" placeholder="click to edit">
+					<input type="text" class="form-control" name="cmp3" placeholder="click to edit" required>
 					</div>
 					
 
 					<div class="form-group">
 					<label>Overall Height</label> 
-					<input type="text" class="form-control" name="oheight3" placeholder="click to edit">
+					<input type="text" class="form-control" name="oheight3" placeholder="click to edit" required>
 					</div>
 					
 
 					<div class="form-group">
 					<label>M/H Neck Height</label> 
-					<input type="text" class="form-control" name="mhn_height3" placeholder="click to edit">
+					<input type="text" class="form-control" name="mhn_height3" placeholder="click to edit" required>
 					</div>
 					
 
 					<div class="form-group">
 					<label>Liquid Height</label> 
-					<input type="text" class="form-control" name="l_height3" placeholder="click to edit">
+					<input type="text" class="form-control" name="l_height3" placeholder="click to edit" required>
 					</div>
 					
 				</div>
@@ -289,7 +292,7 @@ foreach($capacity_one as $key=>$capacity_one_value)
 						 <div class="col-sm-2"></div>
 						 <div class="col-sm-4"><label>Air Balloons</label></div>
 						 <div class="col-sm-4">
-						 <select class="form-control" name="air">
+						 <select class="form-control" name="air" required>
 							<option>Yes</option>
 							<option>No</option> 
 						</select>
@@ -301,7 +304,7 @@ foreach($capacity_one as $key=>$capacity_one_value)
 						 <div class="col-sm-2"></div>
 						 <div class="col-sm-4"><label>Spring</label></div>
 						 <div class="col-sm-4">
-						 <select class="form-control" name="spring">
+						 <select class="form-control" name="spring" required>
 							<option>Yes</option>
 							<option>No</option> 
 						</select>
@@ -313,7 +316,7 @@ foreach($capacity_one as $key=>$capacity_one_value)
 						 <div class="col-sm-2"></div>
 						 <div class="col-sm-4"><label>Product Used</label></div>
 						 <div class="col-sm-4">
-						 <select class="form-control" name="product">
+						 <select class="form-control" name="product" required>
 							<option>Water</option>
 							<option>No</option> 
 						</select>
@@ -325,7 +328,7 @@ foreach($capacity_one as $key=>$capacity_one_value)
 						 <div class="col-sm-2"></div>
 						 <div class="col-sm-4"><label>Validity Period</label></div>
 						 <div class="col-sm-4">
-						 <select class="form-control" name="validity">
+						 <select class="form-control" name="validity" required>
 							<option>1 Year</option>
 							<option>2 Years</option>
 							<option>3 Years</option>
@@ -342,7 +345,7 @@ foreach($capacity_one as $key=>$capacity_one_value)
 						 <div class="col-sm-2"></div>
 						 <div class="col-sm-4"><label>Expiry Date</label></div>
 						 <div class="col-sm-4">
-						 <input type="date" class="form-control" name="expiry_date">
+						 <input type="date" class="form-control" name="expiry_date" required>
 						 </div>
 						 <div class="col-sm-2"></div>
 		   </div><!-- end of Expire Date ROW--->

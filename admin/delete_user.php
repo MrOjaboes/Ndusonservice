@@ -8,7 +8,7 @@ if(!isset($_SESSION['email'])){
          <?php include('includes/connection.php');?> 
 <?php
  
-$message ='Are you sure you want to delete the following client\'s details?';
+$message ='';
 
 if(isset($_GET['did'])){
 	$id = $_GET['did'];
@@ -36,7 +36,8 @@ if(isset($_POST['delete'])){
             $sql = "DELETE FROM users WHERE Userid = '$dbid' ";
             $query = mysqli_query($connect, $sql) or die(mysqli_error($connect)); 
 			 if($query){
-				 header("location:users.php");
+                $message .=  '<p class="alert alert-success" >user Deleted successfully!</p>';
+                header("refresh:2; url=users.php");
 } 
 } 
  ?>
@@ -60,6 +61,7 @@ if(isset($_POST['delete'])){
 
         <!-- Main content -->
         <section class="content">
+        <div><?php echo $message ?></div>
 
             <!-- Default box -->
             <div class="box">		
@@ -75,7 +77,7 @@ if(isset($_POST['delete'])){
                     </div>
                 </div>
                 <div class="box-body">
-                    <h4 class="text-center"><b class="alert alert-danger"><?php echo $message;?></b></h4>
+                    <h4 class="text-center"><b class="alert alert-danger">Are You sure you want to delete this user's details</b></h4>
                       <h1><?php echo $fname;?></h1>
                 <div class="col-md-4 col-sm-4 col-xs-4"></div>
 			<div class="col-md-4 col-sm-4 col-xs-4">

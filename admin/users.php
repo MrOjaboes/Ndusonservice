@@ -82,8 +82,7 @@ if(!isset($_SESSION['email'])){
                     <td ><?php echo $mydate;  ?></td>
                      
                     <td>
-					 <a href="user_details.php?cid=<?php echo $id ?>"><button title="user details" class="btn btn-info"><i class="fa fa-file"></i></button></a>
-					<a href="delete_user.php?did=<?php echo $id ?>"><button name="delete" title="delete user" class="btn btn-danger"><i class="fa fa-trash"></i></button></a>
+					  <a href="delete_user.php?did=<?php echo $id ?>"><button name="delete" title="delete user" class="btn btn-danger"><i class="fa fa-trash"></i></button></a>
                     </td>
                 </tr>
                 <?php  

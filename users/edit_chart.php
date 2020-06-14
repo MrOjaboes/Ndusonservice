@@ -44,15 +44,16 @@ if(isset($_GET['uid'])){
         //$date_modified = $row['PostingDate'];
  
  				//date formating
-				 $cdate = new DateTime($dateOfIssue); 
-				 $expiry_date = new DateTime($expiry_date); 
-				 $mydate = $cdate->format('l, j F Y');
-				 $mydate1 = $expiry_date->format('l, j F Y');
+				// $cdate = new DateTime($dateOfIssue); 
+				 //$expiry_date = new DateTime($expiry_date); 
+				 //$mydate = $cdate->format('l, j F Y');
+				 //$mydate1 = $expiry_date->format('l, j F Y');
     }
 }
 
 
 if(isset($_POST['submit'])){
+	$message ='';
     $ThisID =  $_GET['uid'];
     $client = mysqli_real_escape_string($connect, $_POST['client']);
     $transporter = mysqli_real_escape_string($connect, $_POST['transporter']);
@@ -105,7 +106,8 @@ if(isset($_POST['submit'])){
 	 
 				
             if($result1){
-		 header("location:index.php");
+				$message .='<p class="alert alert-success">Chart Updated Successfully!</p>';
+		 header("refresh:2; url=index.php");
 			 }
         } 
      
@@ -114,7 +116,7 @@ if(isset($_POST['submit'])){
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">        
         <section class="content">
-            <?php echo $message ?>
+           <div> <?php echo $message ?></div>
 
             <!-- Default box -->
             <div class="box">
@@ -155,7 +157,7 @@ if(isset($_POST['submit'])){
 
 				<div class="form-group">
 				<label>Date Of Issue</label> 
-				<input type="text" class="form-control" name="dis" id="datepicker" value="<?php echo $mydate; ?>">
+				<input type="text" class="form-control" name="dis" id="datepicker" value="<?php echo $dateOfIssue; ?>">
 				</div>
 				
 
@@ -377,7 +379,7 @@ if(isset($_POST['submit'])){
 						 <div class="col-sm-2"></div>
 						 <div class="col-sm-4"><label>Expiry Date</label></div>
 						 <div class="col-sm-4">
-						 <input type="text" class="form-control" id="datepicker1" value="<?php echo $mydate1; ?>" name="expiry_date">
+						 <input type="text" class="form-control" id="datepicker1" value="<?php echo $expiry_date; ?>" name="expiry_date">
 						 </div>
 						 <div class="col-sm-2"></div>
 		   </div><!-- end of Expire Date ROW--->

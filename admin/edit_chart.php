@@ -11,7 +11,7 @@ $message = "<h2></h2>";
  
 if(isset($_GET['uid'])){
     $projectID = $_GET['uid'];
-    $sql = "SELECT * FROM caliberation_chart INNER JOIN caliberation_chart_capacity ON caliberation_chart_capacity.caliberation_chart_capacity_id = caliberation_chart.caliberation_chart_id ";
+    $sql = "SELECT * FROM caliberation_chart WHERE caliberation_chart_id ='$projectID'";
       // $sql = "SELECT * FROM caliberation_chart WHERE caliberation_chart_id ='$projectID' ";
     $query = mysqli_query($connect, $sql) or die(mysqli_error($connect));
     while($row = mysqli_fetch_array($query)){
@@ -44,15 +44,16 @@ if(isset($_GET['uid'])){
         //$date_modified = $row['PostingDate'];
  
  				//date formating
-				 $cdate = new DateTime($dateOfIssue); 
-				 $expiry_date = new DateTime($expiry_date); 
-				 $mydate = $cdate->format('l, j F Y');
-				 $mydate1 = $expiry_date->format('l, j F Y');
+				// $cdate = new DateTime($dateOfIssue); 
+				 //$expiry_date = new DateTime($expiry_date); 
+				 //$mydate = $cdate->format('l, j F Y');
+				 //$mydate1 = $expiry_date->format('l, j F Y');
     }
 }
 
 
 if(isset($_POST['submit'])){
+	$message ='';
     $ThisID =  $_GET['uid'];
     $client = mysqli_real_escape_string($connect, $_POST['client']);
     $transporter = mysqli_real_escape_string($connect, $_POST['transporter']);
@@ -90,7 +91,8 @@ if(isset($_POST['submit'])){
 				spring='$spring', product_used='$product_used', validity_period='$validity_period', expiry_date='$expiry_date' WHERE caliberation_chart_id ='$ThisID'";  
             $query = mysqli_query($connect, $sql) or die(mysqli_error($connect)); 
             
-            //looping through the calibration chart capacity
+			//looping through the calibration chart capacity
+			    
                 $capacity_one = $_POST['capacity_one'];
                 $ullage_one = $_POST['ullage_one'];
                 $capacity_two = $_POST['capacity_two'];
@@ -98,37 +100,28 @@ if(isset($_POST['submit'])){
                 $capacity_three = $_POST['capacity_three'];	  	 
                 $ullage_three = $_POST['ullage_three'];	  	 
                 
-            foreach($capacity_one as $key=>$capacity_one_value)
-					{
-					$ullage_one = $ullage_one[$key];
-					$capacity_two = $capacity_two[$key];
-					$ullage_two = $ullage_two[$key];
-					$capacity_three = $capacity_three[$key];
-					$ullage_three = $ullage_three[$key];
-					  
+             
 					 $sql2 = " UPDATE caliberation_chart_capacity SET capacity_one ='$capacity_one', ullage_one ='$ullage_one', capacity_two ='$capacity_two', ullage_two ='$ullage_two', capacity_three ='$capacity_three', ullage_three ='$ullage_three' WHERE caliberation_chart_id ='$ThisID'";
-	 	$result1 = mysqli_query($connect,$sql2)or die(mysqli_error($connect));
+	 	            $result1 = mysqli_query($connect,$sql2)or die(mysqli_error($connect));
 	 
-				}
+				
             if($result1){
-		 header("location:charts.php");
+				$message .='<p class="alert alert-success">Chart Updated Successfully!</p>';
+		 header("refresh:2; url=index.php");
 			 }
         } 
      
 ?>
 <?php include "includes/header.php";?>
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-		<!-- Content Header (Page header) -->
-		        <!-- Main content -->
+    <div class="content-wrapper">        
         <section class="content">
-            <?php echo $message ?>
+           <div> <?php echo $message ?></div>
 
             <!-- Default box -->
             <div class="box">
                 <div class="box-header with-border">
                     <h3 class="box-title"></h3>
-
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                             <i class="fa fa-minus"></i></button>
@@ -164,7 +157,7 @@ if(isset($_POST['submit'])){
 
 				<div class="form-group">
 				<label>Date Of Issue</label> 
-				<input type="text" class="form-control" name="dis" id="datepicker" value="<?php echo $mydate; ?>">
+				<input type="text" class="form-control" name="dis" id="datepicker" value="<?php echo $dateOfIssue; ?>">
 				</div>
 				
 
@@ -297,6 +290,7 @@ if(isset($_POST['submit'])){
                 //$sql2 = " SELECT * FROM caliberation_chart WHERE caliberation_chart_id ='$id' AND caliberation_chart_capacity WHERE caliberation_chart_capacity_id ='$id' LIMIT 1 ";
                 $query = mysqli_query($connect, $sql) or die(mysqli_error($connect));
                 while($row = mysqli_fetch_array($query)){
+					$caliberation_chart_capacity_id = $row['caliberation_chart_capacity_id'];
                     $capacity_one = $row['capacity_one'];
                     $capacity_two = $row['capacity_two'];
                     $capacity_three = $row['capacity_three'];
@@ -385,7 +379,7 @@ if(isset($_POST['submit'])){
 						 <div class="col-sm-2"></div>
 						 <div class="col-sm-4"><label>Expiry Date</label></div>
 						 <div class="col-sm-4">
-						 <input type="text" class="form-control" value="<?php echo $mydate1; ?>" id="datepicker1" name="expiry_date">
+						 <input type="text" class="form-control" id="datepicker1" value="<?php echo $expiry_date; ?>" name="expiry_date">
 						 </div>
 						 <div class="col-sm-2"></div>
 		   </div><!-- end of Expire Date ROW--->
